@@ -1,0 +1,490 @@
+/* *, *::before, *::after : Ces sélecteurs 
+ciblent tous les éléments de la page
+ (*) ainsi que tous les pseudo-éléments 
+::before et ::after de chaque élément. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Inclut padding et border dans la taille d'élément */
+}
+
+
+/* Props personnalisées */
+
+
+
+:root {
+  /* Définition des propriétés personnalisées (variables CSS) */
+  --ff-primary: 'Source Sans Pro', sans-serif;  /* Police primaire pour le texte */
+  --ff-secondary: 'Source Code Pro', monospace;  /* Police secondaire pour le texte */
+  
+  --fw-reg: 300;   /* Poids de police régulier */
+  --fw-bold: 900;  /* Poids de police gras */
+  
+  --clr-light: #fff;      /* Couleur claire (blanc) */
+  --clr-dark: #303030;    /* Couleur foncée (presque noir) */
+  --clr-accent: #16e0bd;  /* Couleur d'accent (turquoise) */
+  
+  --fs-h1: 3rem;     /* Taille de police pour les en-têtes h1 */
+  --fs-h2: 2.25rem;  /* Taille de police pour les en-têtes h2 */
+  --fs-h3: 1.25rem;  /* Taille de police pour les en-têtes h3 */
+  --fs-body: 1rem;   /* Taille de police pour le corps du texte */
+  
+  --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+        0.125em 0.125em 0.25em rgba(0,0,0,.15);  /* Box shadow : supperposition de deux shadows */
+
+}
+
+
+@media (min-width: 800px) {
+  /* Adaptations de la taille de la police pour les écrans de largeur minimale 800px */
+  :root {
+      --fs-h1: 4.5rem;      /* Taille de police agrandie pour les en-têtes h1 sur les écrans plus larges */
+      --fs-h2: 3.75rem;     /* Taille de police agrandie pour les en-têtes h2 sur les écrans plus larges */
+      --fs-h3: 1.5rem;      /* Taille de police agrandie pour les en-têtes h3 sur les écrans plus larges */
+      --fs-body: 1.125rem;  /* Taille de police agrandie pour le corps du texte sur les écrans plus larges */
+  }
+}
+
+
+/* General styles */
+
+
+body {
+  /* Configuration globale du corps du document */
+  background: var(--clr-light);    /* Couleur de fond du document, utilisant la variable CSS définie précédemment */
+  color: var(--clr-dark);          /* Couleur du texte, utilisant la variable CSS définie précédemment */
+  margin: 0;                       /* Réinitialise la marge externe du corps du document */
+  font-family: var(--ff-primary);  /* Définit la police du texte du document */
+  font-size: var(--fs-body);       /* Définit la taille du texte du document */
+  line-height: 1.6;                /* Définit la hauteur de ligne du texte */
+}
+
+
+section {
+  padding: 5em 2em;  /* Espacement interne des sections : 5em en haut et en bas, 2em à gauche et à droite */
+}
+
+
+img {
+  display: block;    /* Les images sont définies pour s'afficher comme des blocs, pas en ligne avec le texte environnant */
+  max-width: 100%;   /* Les images ne dépasseront pas la largeur de leur conteneur */
+}
+
+
+strong { 
+  font-weight: var(--fw-bold);  /* Définit le poids de la police pour les éléments forts/gras */
+}
+
+
+:focus {
+  /* not workiiiiiiiing !!!!!!! */
+  /* Configuration du focus pour l'accessibilité */
+  outline: 3px solid var(--clr-accent);  /* Ajoute une bordure comme indicateur de focus */
+  outline-offset: 5px;                   /* Ajoute un espace entre la bordure de focus et l'élément */
+}
+
+/* Boutons */
+.btn {
+  display: inline-block;   /* Le bouton est en ligne avec le texte environnant, mais accepte les propriétés de bloc */
+  padding: .5em 2.5em;     /* Espacement interne du bouton */
+  background: var(--clr-accent);  /* Couleur de fond du bouton */
+  color: var(--clr-dark);  /* Couleur du texte du bouton */
+  text-decoration: none;   /* Aucune décoration de texte (soulignement, par exemple) */
+  cursor: pointer;         /* Le curseur apparait comme un pointeur lorsqu'il survole le bouton */
+  font-size: .8rem;        /* Taille du texte du bouton */
+  text-transform: uppercase;  /* Le texte du bouton est en majuscules */
+  letter-spacing: 2px;     /* Espace entre les lettres du texte du bouton */
+  font-weight: var(--fw-bold);  /* Poids du texte du bouton */
+  transition: transform 200ms ease-in-out;  /* Animation douce pour les transformations du bouton */
+}
+
+
+.btn:hover {
+  /* Effet de survol du bouton */
+  transform: scale(1.1);  /* Lorsqu'il est survolé, le bouton s'agrandit légèrement */
+}
+
+
+/* TYPOGRAPHIE */
+
+
+h1, h2, h3 {
+  line-height: 1;  /* Hauteur de ligne des en-têtes */
+  margin: 0;       /* Marges externes des en-têtes retirées */
+}
+
+/* Tailles spécifiques des en-têtes */
+h1 { font-size: var(--fs-h1) }  /* Taille de la police pour h1 en utilisant la variable définie précédemment */
+h2 { font-size: var(--fs-h2) }  /* Taille de la police pour h2 */
+h3 { font-size: var(--fs-h3) }  /* Taille de la police pour h3 */
+
+
+.section__title {
+  margin-bottom: .25em;        /* Marge en bas du titre de la section */
+}
+
+.section__title__intro {
+  font-weight: var(--fw-reg);  /* Poids de la police pour les titres d'introduction dans la section */
+}
+
+.section__title__intro strong {
+  display: block;              /* Affiche l'élément strong comme un bloc, le faisant occuper toute la largeur disponible */
+}
+
+.section__subtitle {
+  margin: 0;                   /* Aucune marge externe pour les sous-titres dans la section */
+  font-size: var(--fs-h3);     /* Taille de la police pour les sous-titres dans la section */
+}
+
+.section__subtitle__intro,
+.section__subtitle__about {
+  background: var(--clr-accent);  /* Couleur de fond pour les sous-titres d'introduction et à propos */
+  padding: .25em 1em;             /* Espacement interne pour ces sous-titres */
+  font-family: var(--ff-secondary);  /* Police de caractères pour ces sous-titres */
+  margin-bottom: 1em;             /* Marge en bas pour ces sous-titres */
+}
+
+.section__subtitle__work {
+  color: var(--clr-accent);     /* Couleur du texte pour les sous-titres de la section de travail */
+  font-weight: var(--fw-bold);  /* Poids de la police pour ces sous-titres */
+  margin-bottom: 2em;           /* Marge en bas pour ces sous-titres */
+}
+
+
+
+/* header */
+nav {
+  display: none;
+}
+
+.logo{
+  width: 400px;
+}
+/* INTRO SECTION */
+
+
+.intro {
+  position: relative;     /* Position relative utilisée pour le positionnement interne des éléments enfants */
+}
+
+.intro__img {
+  box-shadow: var(--bs);  /* Ajoute une ombre à l'image en utilisant une variable CSS pour les valeurs de l'ombre */
+}
+
+
+/* .section__subtitle__intro {
+  display: inline-block;  /* Fait en sorte que l'élément ne prenne que l'espace nécessaire pour son contenu, permettant d'autres éléments sur la même ligne */
+
+@media (min-width: 600px) {  /* Configuration pour les écrans d'une largeur minimale de 600px */
+  .intro {
+      display: grid;         /* Utilise le modèle de mise en page de grille */
+      width: min-content;    /* La largeur de l'élément est aussi large que nécessaire pour contenir son contenu */
+      margin: 0 auto;        /* Centre horizontalement l'élément dans son conteneur */
+      grid-column-gap: 1em;  /* Espace entre les colonnes de grille */
+      grid-template-areas: 
+          "img title"
+          "img subtitle";     /* Définit les zones de la grille et leur disposition */
+      grid-template-columns: min-content max-content;  /* Définit la largeur des colonnes de grille */
+  }
+  
+  .intro__img {
+      grid-area: img;      /* Positionne cet élément dans la zone 'img' de la grille */
+      min-width: 250px;    /* Largeur minimale de l'image */
+      position: relative;  /* Position relative pour le positionnement interne des enfants */
+      z-index: 2;          /* Contrôle l'ordre de superposition, plaçant cet élément au-dessus d'éléments avec un z-index inférieur */
+  }
+  
+  .section__subtitle__intro {
+      align-self: start;    /* Aligne cet élément en haut de sa zone de grille */
+      grid-column: -1 / 1;  /* Positionne cet élément pour qu'il s'étende de la dernière colonne à la première */
+      grid-row: 2;          /* Positionne cet élément dans la deuxième ligne de la grille */
+      text-align: right;    /* Aligne le texte à droite dans l'élément */
+      position: relative;   /* Position relative pour le positionnement des enfants */
+      left: -1.5em;         /* Déplace l'élément de 1.5em vers la gauche */
+      width: calc(100% + 1.5em);  /* Augmente la largeur de l'élément de 1.5em */
+  }
+}
+
+
+
+
+/* MY SERVICES SECTION */
+
+/* Configuration globale de la section "Mes services" */
+.my_services {
+  background-color: var(--clr-dark);  /* Définit la couleur d'arrière-plan à une variable CSS pour une couleur foncée */
+  background-image: url(../img/blog2.jpg);  /* Définit l'image d'arrière-plan */
+  background-size: cover;  /* Assure que l'image d'arrière-plan couvre entièrement l'élément */
+  /* background-blend-mode: multiply; */  /* [COMMENTÉ] Ajusterait la façon dont l'image se mélange avec la couleur d'arrière-plan */
+  color: var(--clr-light);  /* Définit la couleur du texte à une variable CSS pour une couleur claire */
+  text-align: center;  /* Centre le texte horizontalement dans l'élément */
+}
+
+/* Configuration du titre dans la section "Mes services" */
+.section__title__services {
+  color: var(--clr-accent);  /* Utilise une variable CSS pour définir la couleur du texte */
+  position: relative;  /* Permet le positionnement absolu des éléments enfants par rapport à celui-ci */
+}
+
+/* Configuration d'un pseudo-élément après le titre */
+.section__title__services::after {
+  content: '';                   /* Nécessaire pour générer le pseudo-élément */
+  display: block;                /* Affiche le pseudo-élément en tant que bloc */
+  width: 2em;                    /* Largeur du pseudo-élément */
+  height: 1px;                   /* Hauteur du pseudo-élément */
+  margin: 0.5em auto 1em;        /* Marge autour du pseudo-élément pour le positionnement */
+  background: var(--clr-light);  /* Couleur d'arrière-plan du pseudo-élément, utilisant une variable CSS */
+  opacity: 0.25;                 /* Transparence du pseudo-élément */
+}
+
+/* Configuration de l'élément "services" */
+.services {
+  margin-bottom: 4em;  /* Espace en bas de l'élément */
+}
+
+/* Configuration de l'élément "service" */
+.service {
+  max-width: 500px;  /* Largeur maximale de l'élément */
+  margin: 0 auto;  /* Centre horizontalement l'élément dans son conteneur */
+}
+
+/* Configuration pour les écrans d'une largeur minimale de 800px */
+@media (min-width: 800px) {
+  .services {
+      display: flex;  /* Utilise le modèle de boîte flexible pour afficher les enfants */
+      max-width: 1000px;  /* Largeur maximale du conteneur */
+      margin-left: auto;  /* Centre horizontalement l'élément à gauche */
+      margin-right: auto;  /* Centre horizontalement l'élément à droite */
+  }
+  
+  /* Pour tous les éléments "service" qui suivent un élément "service" */
+  .service + .service {
+      margin-left: 2em;  /* Espace à gauche de l'élément */
+  }
+}
+
+
+/* ABOUT ME */
+
+
+.about-me {
+  max-width: 1000px;  /* Largeur maximale de la section */
+  margin: 0 auto;  /* Centre horizontalement la section dans son conteneur */
+}
+
+.about__img {
+  height: 500px;
+  width: 200px;
+  margin-left: 50px;
+  box-shadow: var(--bs);  /* Applique une ombre à l'image selon une variable CSS prédéfinie */
+}
+
+/* Configuration pour les écrans d'une largeur minimale de 600px */
+@media (min-width: 600px) {
+  .about-me {
+      display: grid;                     /* Utilise le modèle de boîte de grille */
+      grid-template-columns: 1fr 300px;  /* Divise la grille en deux colonnes: l'une proportionnelle, l'autre fixe à 200px */
+      grid-template-areas: 
+          "title img"
+          "subtitle img"
+          "text img";                   /* Définit les zones de grille pour positionner les enfants*/
+      grid-column-gap: 2em;              /* Espacement entre les colonnes de grille */
+  }
+  
+  .section__title__about {
+      grid-area: title;  /* Positionne cet élément dans la zone 'title' de la grille */
+  }
+  
+  .section__subtitle__about {
+      grid-area: subtitle; 
+      grid-column: 1 / -1;      /* Permet à l'élément de s'étendre sur toutes les colonnes de grille */
+      grid-row: 2;              /* Positionne l'élément dans la deuxième rangée de grille */
+      position: relative;       /* Permet le positionnement relatif à sa position normale */
+      left: -1em;               /* Déplace l'élément de 1em vers la gauche */
+      width: calc(100%);  /* Élargit l'élément de 2em plus que sa largeur normale */
+      padding-left: 2em;        /* Padding à gauche de l'élément */
+      padding-right: calc(300px + 3em);  /* Padding à droite de l'élément, calculé en fonction de la largeur fixe de la colonne de grille et un ajout supplémentaire de 4em */
+  }
+  
+  .about__img {
+      grid-area: img;      /* Positionne cet élément dans la zone 'img' de la grille */
+      position: relative;  /* Permet le positionnement relatif à sa position normale */
+      z-index: 2;          /* Établit l'ordre de superposition de l'élément */
+  }
+}
+
+/* My Work */
+
+.my-work {
+  background-color: var(--clr-dark);  /* Applique une couleur d'arrière-plan à la section "My Work" */
+  color: var(--clr-light);            /* Définit la couleur du texte dans la section "My Work" */
+  text-align: center;                 /* Centre le texte dans la section "My Work" */
+}
+
+.portfolio {
+  display: grid;                  /* Utilise le système de grille pour organiser les éléments enfants */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Crée des colonnes qui s'adaptent à la largeur de la fenêtre */
+}
+
+
+.portfolio-content{
+  overflow: hidden; 
+  
+}
+.portfolio-item{
+  overflow: hidden;    
+  float: left;
+  margin-bottom: 30px;
+  position: relative;
+  
+}
+.item-milieu{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.portfolio-image{
+  width: 100%; 
+  
+}
+.portfolio-layer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  
+}
+.portfolio-item:hover .portfolio-layer{
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .5s, visibility .5s;
+
+}
+.portfolio-layer .layer-info{
+  text-align: center;
+  position: absolute;
+  /*hero image effect : centrer un élément % à un élément */
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%,-50%);/*le centre du 2ème elt soit le même que du 1er*/
+
+}
+.portfolio-layer .layer-category{
+  text-transform: uppercase;
+  color: #6195ff;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+  top: 10px;
+  opacity: 0;
+  transition: top 0.5s, opacity 0.5s;
+  transition-delay: 0.2s;/* va s'afficher sans attendre*/
+
+}
+
+.portfolio-layer .layer-title{
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 15px;
+  position: relative;
+  top: 10px;
+  opacity: 0;
+  transition: top 0.5s, opacity 0.5s;
+  transition-delay: 0.3s;/* va s'afficher après un délai*/
+}
+.layer-info a{
+  position: relative;
+  top: 10px;
+  opacity: 0;
+  transition: top 0.5s, opacity 0.5s;
+  transition-delay: 0.3s;
+
+}
+.layer-info a i{
+  display: inline-block ;/* pour que les deux icones restent juxtaposées*/
+  width: 40px;
+  height: 40px;
+  line-height: 40px; /*aligner verticalement ?==> doit avoir même height que a*/
+  color: #fff; /*couleur de l'icone*/
+  background-color: #6195ff;
+
+}
+.portfolio-item:hover .layer-category, 
+.portfolio-item:hover .layer-title,
+.portfolio-item:hover .layer-info a {
+  top: 0;
+  opacity: 1;
+}
+
+
+/*footer*/
+footer{
+
+  background-color: #16e0bd;
+  height: auto;
+  width: 100vw;
+  font-family: "Open Sans";
+  padding-top: 40px;
+  color: #fff;
+}
+
+.footer-content{
+  display: absolute;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.footer-content p{
+  max-width: 500px;
+  margin: 10px auto;
+  line-height: 28px;
+  font-size: 14px;
+}
+.socials{
+  list-style: none;
+  display: absolute;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 3rem 0;
+}
+.socials li{
+  margin: 0 10px;
+  display: inline;
+}
+
+.socials li a{
+  text-decoration: none;
+  color: white;
+}
+.socials a i{
+  font-size: 1.1rem;
+  transition: color .4s ease;
+
+}
+.socials a:hover i{
+  color: aqua;
+}
+
+.footer-bottom{
+  background: #000;
+  width: 100vw;
+  padding: 20px 0;
+  text-align: center;
+}
+.footer-bottom p{
+  font-size: 14px;
+  word-spacing: 2px;
+  text-transform: capitalize;
+}
+.footer-bottom span{
+  text-transform: uppercase;
+  opacity: .4;
+  font-weight: 200;
+}
